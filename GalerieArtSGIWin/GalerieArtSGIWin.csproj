@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SGI">
-      <HintPath>..\..\SGI\SGI\bin\Debug\SGI.dll</HintPath>
+      <HintPath>..\..\PRTF-Project\SGI\bin\Debug\SGI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -58,6 +58,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DataTest.cs" />
     <Compile Include="SGIArt.xaml.cs">
       <DependentUpon>SGIArt.xaml</DependentUpon>
     </Compile>
@@ -104,6 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="papillon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="key-chain.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

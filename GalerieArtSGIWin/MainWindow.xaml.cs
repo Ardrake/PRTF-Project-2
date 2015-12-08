@@ -20,6 +20,8 @@ namespace GalerieArtSGIWin
     /// </summary>
     public partial class MainWindow : Window
     {
+        int nbressai = 0;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -32,9 +34,29 @@ namespace GalerieArtSGIWin
 
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.Hide();
-            SGIArt sgiArt = new SGIArt();
-            sgiArt.Show();
+            
+            if ((USERNAME.Text == "" || PASSWORD.Text == "") && (SGIArt.modeTest != "O"))
+            {
+                MessageBox.Show("Usager et mot de passe sont requis pour obtenir l'accès au système", "Login Incorrect", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+            }
+
+            else if ((USERNAME.Text == "SGI" && PASSWORD.Text == "admin") || (SGIArt.modeTest == "O"))
+            {
+                this.Hide();
+                SGIArt sgiArt = new SGIArt();
+                sgiArt.Show();
+            }
+            else
+            {
+                MessageBox.Show("Erreur usager ou mot de passe", "Login Incorrect", MessageBoxButton.OK, MessageBoxImage.Exclamation);
+                nbressai += 1;
+            }
+
+            if (nbressai == 3)
+            {
+                this.Close();
+            }
+
         }
     }
 }

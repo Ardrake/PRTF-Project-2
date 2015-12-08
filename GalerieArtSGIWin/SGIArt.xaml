@@ -5,8 +5,30 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GalerieArtSGIWin"
         mc:Ignorable="d"
-        Title="SGIArt" Height="544.737" Width="701.504">
+        Title="Système de Galerie Informatisé (SGI)" Height="558.237" Width="790.004">
     <Grid>
+        <Button x:Name="Quitter" Content="Quitter" Margin="0,0,10,10" Click="Quitter_Click" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
+        <TabControl x:Name="tabControl" Margin="10,10,10,50">
+            <TabItem Header="Conservateurs" Height="23" VerticalAlignment="Top">
+                <Grid Background="#FFE5E5E5" Margin="0,0,0,-1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="139*"/>
+                        <RowDefinition Height="84*"/>
+                    </Grid.RowDefinitions>
+                    <DataGrid x:Name="dataGridConservateur" Margin="10,150,10,10" Grid.RowSpan="2"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Artistes">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="dataGridArtiste" Margin="10,150,10,10"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Oeuvres">
+                <Grid Background="#FFE5E5E5">
+                    <DataGrid x:Name="DataGridOeuvre" Margin="10,150,10,10"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
 
     </Grid>
 </Window>
