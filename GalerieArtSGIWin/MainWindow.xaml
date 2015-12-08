@@ -1,0 +1,18 @@
+﻿<Window x:Class="GalerieArtSGIWin.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:GalerieArtSGIWin"
+        mc:Ignorable="d"
+        Title="Formulaire SGI" Height="350" Width="525">
+    <Grid>
+        <Label x:Name="label" Content="Bienvenue &#xD;&#xA;à la Galerie &#xD;&#xA;d'art SGI" HorizontalAlignment="Left" Margin="177,46,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.438,0.488" Width="162" Height="114" FontSize="26.667" FontWeight="Bold"/>
+        <Label x:Name="label1" Content="Nom d'accès :" HorizontalAlignment="Left" Margin="52,198,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="label2" Content="Mot de passe :" HorizontalAlignment="Left" Margin="52,229,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="textBox" HorizontalAlignment="Left" Height="23" Margin="144,201,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="262" RenderTransformOrigin="-0.017,0.629"/>
+        <TextBox x:Name="textBox1" HorizontalAlignment="Left" Height="23" Margin="144,232,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="262"/>
+        <Button x:Name="button_Copy1" Content="Quitter" HorizontalAlignment="Left" Margin="306,275,0,0" VerticalAlignment="Top" Width="100" Click="button_Click"/>
+        <Button x:Name="button" Content="Ok" HorizontalAlignment="Left" Margin="122,275,0,0" VerticalAlignment="Top" Width="100" Click="button_Click_1"/>
+    </Grid>
+</Window>
