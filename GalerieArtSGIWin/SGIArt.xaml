@@ -11,15 +11,23 @@
         <TabControl x:Name="tabControl" Margin="10,10,10,50">
             <TabItem Header="Conservateurs" Height="23" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,-1">
-                    <DataGrid x:Name="dataGridConservateur" Margin="10,103,278,10" Grid.RowSpan="2"/>
+
+                    <!--<DataGrid x:Name="dataGridConservateur" Margin="10,103,278,10" Grid.RowSpan="2"/>-->
+                    <DataGrid x:Name="dataGridConservateur" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10,100,281,9" IsReadOnly="True" CanUserReorderColumns="False" CanUserResizeColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="dgcIdConservateur" Header="ID" Binding="{Binding ID}" Width="50" />
+                            <DataGridTextColumn x:Name="dgcPrenomConservateur" Header="Prénom" Binding="{Binding Prenom}" Width="150" />
+                            <DataGridTextColumn x:Name="dgcNomConservateur" Header="Non" Binding="{Binding Nom}" Width="150"/>
+                            <DataGridTextColumn x:Name="dgcCommissionPayerConservateur" Header="Commission" Binding="{Binding Commission}" Width="94"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
                     <Label x:Name="labelConservateurPrenom" Content="Prénom:" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top" ToolTip="Alphanumérique (Maximum 60 char)"/>
                     <TextBox x:Name="textBoxConservateurPrenom" HorizontalAlignment="Left" Height="23" Margin="69,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" TabIndex="1" TextChanged="textBox_TextChanged"/>
                     <Label x:Name="labelConservateurID" Content="ID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Cursor="" ToolTip="Alphanumérique (5 char de long)" RenderTransformOrigin="1.227,0.615"/>
-                    <TextBox x:Name="textBoxConservateurID" HorizontalAlignment="Left" Height="23" Margin="32,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" TabIndex="0"/>
+                    <TextBox x:Name="textBoxConservateurID" HorizontalAlignment="Left" Height="23" Margin="69,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" TabIndex="0"/>
                     <Label x:Name="labelConservateurNom" Content="Nom:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" ToolTip="Alphanumérique (Maximum 60 char)" RenderTransformOrigin="1,0.538"/>
                     <TextBox x:Name="textBoxConservateurNom" HorizontalAlignment="Left" Height="23" Margin="69,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" TabIndex="2" TextChanged="textBox_TextChanged"/>
-                    <Label x:Name="labelCommission" Content="Commission:" HorizontalAlignment="Left" Margin="91,10,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBoxCommission" HorizontalAlignment="Left" Height="23" Margin="174,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152"/>
                     <Image x:Name="image1" HorizontalAlignment="Left" Height="414" Margin="479,10,0,0" VerticalAlignment="Top" Width="263" Source="papillon.png" Grid.RowSpan="2"/>
                     <Button x:Name="buttonAjouterConservateur" Content="Ajouter" HorizontalAlignment="Left" Margin="331,10,0,0" VerticalAlignment="Top" Width="140" Height="35" TabIndex="3" Click="buttonAjouterConservateur_Click"/>
                     <Button x:Name="buttonSupprimerConservateur" Content="Suprrimer" HorizontalAlignment="Left" Margin="331,60,0,0" VerticalAlignment="Top" Width="140" Height="35"/>
@@ -27,40 +35,48 @@
             </TabItem>
             <TabItem Header="Artistes">
                 <Grid Background="#FFE5E5E5">
+                    <!--<DataGrid x:Name="dataGridArtiste" Margin="10,100,278,9"/> -->
+                    <DataGrid x:Name="dataGridArtiste" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10,100,272,9" IsReadOnly="True" CanUserReorderColumns="False" CanUserResizeColumns="False">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn x:Name="dgcIdArtiste" Header="ID" Binding="{Binding ID}" Width="50" />
+                            <DataGridTextColumn x:Name="dgcPrenomArtiste" Header="Prénom" Binding="{Binding Prenom}" Width="150" />
+                            <DataGridTextColumn x:Name="dgcNomArtiste" Header="Non" Binding="{Binding Nom}" Width="150"/>
+                            <DataGridTextColumn x:Name="dgcNomConservateurArtiste" Header="ID Conservateur" Binding="{Binding IDConservateur}" Width="95"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
 
-                    <DataGrid x:Name="dataGridArtiste" Margin="10,100,278,9"/>
                     <Label x:Name="labelArtistePrenom" Content="Prénom:" HorizontalAlignment="Left" Margin="10,38,0,0" VerticalAlignment="Top" ToolTip="Alphanumérique (Maximum 60 char)" Height="26" Width="54"/>
                     <TextBox x:Name="textBoxArtistePrenom" HorizontalAlignment="Left" Height="23" Margin="69,38,0,0" TextWrapping="Wrap" TabIndex="2" VerticalAlignment="Top" Width="257 
                              " TextChanged="textBox_TextChanged"/>
-                    <Label x:Name="labelArtisteID" Content="ID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Cursor="" ToolTip="Alphanumérique (5 char de long)" Height="26" Width="22"/>
-                    <TextBox x:Name="textBoxArtisteID" HorizontalAlignment="Left" Height="23" Margin="32,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45" TabIndex="0"/>
+                    <Label x:Name="labelArtisteID" Content="ID" HorizontalAlignment="Left" Margin="5,10,0,0" VerticalAlignment="Top" Cursor="" ToolTip="Alphanumérique (5 char de long)" Height="26" Width="22"/>
+                    <TextBox x:Name="textBoxArtisteID" HorizontalAlignment="Left" Height="23" Margin="27,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TabIndex="0"/>
                     <Label x:Name="labelArtisteNom" Content="Nom:" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" ToolTip="Alphanumérique (Maximum 60 char)" RenderTransformOrigin="1,0.538" Height="26" Width="39"/>
                     <TextBox x:Name="textBoxArtisteNom" HorizontalAlignment="Left" Height="23" Margin="69,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" TabIndex="3" TextChanged="textBox_TextChanged"/>
-                    <Image x:Name="image1_Copy" HorizontalAlignment="Left" Height="414" Margin="479,10,0,0" VerticalAlignment="Top" Width="263" Source="papillon.png"/>
-                    <Label x:Name="label" Content="Conservateur:" HorizontalAlignment="Left" Margin="77,10,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="comboBoxArtiste" HorizontalAlignment="Left" Margin="164,10,0,0" VerticalAlignment="Top" Width="166" TabIndex="1"/>
-                    <Button x:Name="buttonAjouterArtiste" Content="Ajouter" HorizontalAlignment="Left" Margin="331,10,0,0" VerticalAlignment="Top" Width="140" Height="35" TabIndex="4" Click="buttonAjouterArtiste_Click"/>
-                    <Button x:Name="buttonSupprimerArtiste" Content="Suprrimer" HorizontalAlignment="Left" Margin="331,60,0,0" VerticalAlignment="Top" Width="140" Height="35"/>
+                    <Image x:Name="image1_Copy" Height="413" Margin="485,10,10,0" VerticalAlignment="Top" Source="papillon.png"/>
+                    <Label x:Name="label" Content="Conservateur:" HorizontalAlignment="Left" Margin="82,10,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="comboBoxArtiste" HorizontalAlignment="Left" Margin="169,10,0,0" VerticalAlignment="Top" Width="166" TabIndex="1"/>
+                    <Button x:Name="buttonAjouterArtiste" Content="Ajouter" HorizontalAlignment="Left" Margin="340,10,0,0" VerticalAlignment="Top" Width="140" Height="35" TabIndex="4" Click="buttonAjouterArtiste_Click"/>
+                    <Button x:Name="buttonSupprimerArtiste" Content="Suprrimer" HorizontalAlignment="Left" Margin="340,57,0,0" VerticalAlignment="Top" Width="140" Height="35"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Oeuvres">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="DataGridOeuvre" Margin="10,104,160,10"/>
-                    <Image x:Name="image" HorizontalAlignment="Left" Height="225" Margin="601,104,0,0" VerticalAlignment="Top" Width="145" Source="papillon.png"/>
-                    <Label x:Name="labeOeuvreTitre" Content="Titre:" HorizontalAlignment="Left" Margin="82,10,0,0" VerticalAlignment="Top" ToolTip="Alphanumérique (Maximum 60 char)" RenderTransformOrigin="-1.361,0.577"/>
-                    <TextBox x:Name="textBoxOeuvreTitre" HorizontalAlignment="Left" Height="23" Margin="123,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" TextChanged="textBox_TextChanged"/>
+                    <DataGrid x:Name="DataGridOeuvre" Margin="10,104,165,10"/>
+                    <Image x:Name="image" HorizontalAlignment="Left" Height="225" Margin="597,104,0,0" VerticalAlignment="Top" Width="145" Source="papillon.png"/>
+                    <Label x:Name="labeOeuvreTitre" Content="Titre:" HorizontalAlignment="Left" Margin="102,10,0,0" VerticalAlignment="Top" ToolTip="Alphanumérique (Maximum 60 char)" RenderTransformOrigin="-1.361,0.577"/>
+                    <TextBox x:Name="textBoxOeuvreTitre" HorizontalAlignment="Left" Height="23" Margin="143,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="330" TabIndex="1" TextChanged="textBox_TextChanged"/>
                     <Label x:Name="labelOeuvreID" Content="ID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Cursor="" ToolTip="Alphanumérique (5 char de long)"/>
-                    <TextBox x:Name="textBoxOeuvreID" HorizontalAlignment="Left" Height="23" Margin="32,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45"/>
-                    <Label x:Name="label1" Content="Année" HorizontalAlignment="Left" Margin="372,7,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBoxOeuvreAnnee" HorizontalAlignment="Left" Height="23" Margin="421,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
+                    <TextBox x:Name="textBoxOeuvreID" HorizontalAlignment="Left" Height="23" Margin="32,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="66" TabIndex="0"/>
+                    <Label x:Name="label1" Content="Année" HorizontalAlignment="Left" Margin="478,10,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBoxOeuvreAnnee" HorizontalAlignment="Left" Height="23" Margin="527,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60" TabIndex="2"/>
                     <Label x:Name="labelOeuvreValEstimee" Content="Valeur estimée" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
-                    <TextBox x:Name="textBoxOeuvrePrixEstimee" HorizontalAlignment="Left" Height="23" Margin="102,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+                    <TextBox x:Name="textBoxOeuvrePrixEstimee" HorizontalAlignment="Left" Height="23" Margin="102,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100" TabIndex="3"/>
                     <Label x:Name="labelArtiste" Content="Artiste" HorizontalAlignment="Left" Margin="209,41,0,0" VerticalAlignment="Top"/>
-                    <ComboBox x:Name="comboBoxOeuvreArtiste" HorizontalAlignment="Left" Margin="258,41,0,0" VerticalAlignment="Top" Width="223"/>
-                    <Button x:Name="buttonAjouterOeuvre" Content="Ajouter" HorizontalAlignment="Left" Margin="606,10,0,0" VerticalAlignment="Top" Width="140" Height="35" TabIndex="4" Click="buttonAjouterArtiste_Click"/>
-                    <Button x:Name="buttonSupprimerOeuvre" Content="Suprrimer" HorizontalAlignment="Left" Margin="606,50,0,0" VerticalAlignment="Top" Width="140" Height="35"/>
-                    <GroupBox x:Name="groupBox" Header="Vendre Oeuvre" HorizontalAlignment="Left" Margin="601,329,0,0" VerticalAlignment="Top" Height="97" Width="145" Cursor="None" FontStyle="Italic">
-                        <Image x:Name="image2" HorizontalAlignment="Left" Height="61" Margin="27,10,0,0" VerticalAlignment="Top" Width="82" Source="vente.png" MouseLeftButtonDown="ImageVendreClick" RenderTransformOrigin="0.81,0.5">
+                    <ComboBox x:Name="comboBoxOeuvreArtiste" HorizontalAlignment="Left" Margin="258,41,0,0" VerticalAlignment="Top" Width="329" TabIndex="4"/>
+                    <Button x:Name="buttonAjouterOeuvre" Content="Ajouter" HorizontalAlignment="Left" Margin="597,10,0,0" VerticalAlignment="Top" Width="140" Height="35" TabIndex="4" Click="buttonAjouterOeuvre_Click"/>
+                    <Button x:Name="buttonSupprimerOeuvre" Content="Suprrimer" HorizontalAlignment="Left" Margin="597,50,0,0" VerticalAlignment="Top" Width="140" Height="35" TabIndex="5"/>
+                    <GroupBox x:Name="groupBox" Header="Vendre Oeuvre" HorizontalAlignment="Left" Margin="592,329,0,0" VerticalAlignment="Top" Height="97" Width="145" Cursor="None" FontStyle="Italic">
+                        <Image x:Name="image2" HorizontalAlignment="Left" Height="61" Margin="27,10,0,0" VerticalAlignment="Top" Width="82" Source="vente.png" MouseLeftButtonDown="ImageVendreClick" RenderTransformOrigin="0.81,0.5" Cursor="Arrow">
                             <Image.Effect>
                                 <DropShadowEffect/>
                             </Image.Effect>

@@ -33,6 +33,7 @@ namespace GalerieArtSGIWin
             this.dataGridArtiste.ItemsSource = gal.TableauArtistes;
             this.DataGridOeuvre.ItemsSource = gal.TableauOeuvres;
             LoadComboBoxConservateur();
+            LoadcomboBoxOeuvreArtiste();
         }
 
 
@@ -44,6 +45,16 @@ namespace GalerieArtSGIWin
                 comboBoxArtiste.Items.Add(c.ID + ": " + c.Prenom + " " + c.Nom);
             }
         }
+
+
+        private void LoadcomboBoxOeuvreArtiste()
+        {
+            foreach (Artiste c in gal.TableauArtistes)
+            {
+                comboBoxOeuvreArtiste.Items.Add(c.ID + ": " + c.Prenom + " " + c.Nom);
+            }
+        }
+
 
         private void buttonAjouterConservateur_Click(object sender, RoutedEventArgs e)
         {
@@ -94,6 +105,7 @@ namespace GalerieArtSGIWin
             }
         }
 
+
         private void buttonAjouterArtiste_Click(object sender, RoutedEventArgs e)
         {
             string artisteID = textBoxArtisteID.Text;
@@ -115,6 +127,8 @@ namespace GalerieArtSGIWin
                         // Refresh du datagrid
                         this.dataGridArtiste.ItemsSource = null;
                         this.dataGridArtiste.ItemsSource = gal.TableauArtistes;
+                        // rajoute le nouveau conservateur dans le combobox de artiste
+                        comboBoxOeuvreArtiste.Items.Add(artisteID + ": " + artistePrenom + " " + artisteNom);
                         //clean / vide les text box pour prochaine entrée
                         textBoxArtisteID.Text = "";
                         textBoxArtistePrenom.Text = "";
@@ -147,12 +161,72 @@ namespace GalerieArtSGIWin
             }
         }
 
+         
+        private void buttonAjouterOeuvre_Click(object sender, RoutedEventArgs e)
+        {
+            string oeuvreID = textBoxOeuvreID.Text;
+            string oeuvreTitre = textBoxOeuvreTitre.Text;
+            string oeuvreAnnéé = textBoxOeuvreAnnee.Text;
+            string oeuvrePrixEstimee = textBoxOeuvrePrixEstimee.Text;
+            int OeuvreAnnee = 0;
+            int.TryParse(textBoxOeuvreAnnee.Text, out OeuvreAnnee);
+            double valeurOeuvre = 0;
+            double.TryParse(oeuvrePrixEstimee, out valeurOeuvre);
+            string oeuvreSelection = comboBoxOeuvreArtiste.Text;
+            string artisteID = oeuvreSelection.Substring(0, 5);
+            //MessageBox.Show("Clicker BoutonAjouterOuevre");
+            if (oeuvreID != "" && oeuvreTitre != "" && OeuvreAnnee != 0)
+            {
+                if (oeuvreID.Length == 5)
+                {
+                    Oeuvre o = gal.TableauOeuvres.TrouveParID(oeuvreID);
+                    Artiste a = gal.TableauArtistes.TrouveParID(artisteID);
+                    if (o == null && a != null)
+                    {
+                        // ajouté artiste au tableau / collection
+                        gal.AjouterOeuvre(oeuvreID, oeuvreTitre, OeuvreAnnee, valeurOeuvre, artisteID, "O");
+                        // Refresh du datagrid
+                        this.DataGridOeuvre.ItemsSource = null;
+                        this.DataGridOeuvre.ItemsSource = gal.TableauOeuvres;
+                        //clean / vide les text box pour prochaine entrée
+                        textBoxOeuvreID.Text = "";
+                        textBoxOeuvreTitre.Text = "";
+                        textBoxOeuvreAnnee.Text = "";
+                        textBoxOeuvreID.Background = Brushes.White;
+                        textBoxOeuvreTitre.Background = Brushes.White;
+                        textBoxOeuvreAnnee.Background = Brushes.White;
+                    }
+                    else if (o != null)
+                    {
+                        MessageBox.Show("ID " + oeuvreID + " existe déja pour l'oeuvre: " + o.Titre);
+                    }
+                    else if (a == null)
+                    {
+                        MessageBox.Show("Veuillez choisir un Artiste pour cette oeuvre");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Le ID de l'oeuvre doit avoir 5 characteres");
+                    textBoxOeuvreID.Background = Brushes.OrangeRed;
+                }
+            }
+            else
+            {
+                MessageBox.Show("Veuillez remplir tous les champs obligatoire");
+                if (textBoxOeuvreID.Text == "") textBoxOeuvreID.Background = Brushes.OrangeRed;
+                if (textBoxOeuvreTitre.Text == "") textBoxOeuvreTitre.Background = Brushes.OrangeRed;
+                if (textBoxOeuvreAnnee.Text == "") textBoxOeuvreAnnee.Background = Brushes.OrangeRed;
+            }
+        }
+
 
         private void ImageVendreClick(object sender, RoutedEventArgs e)
         {
             MessageBox.Show("Vendre Oeuvre");
             
         }
+
 
         private void Quitter_Click(object sender, RoutedEventArgs e)
         {
