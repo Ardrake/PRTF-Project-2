@@ -148,7 +148,11 @@ namespace GalerieArtSGIWin
         }
 
 
-
+        private void ImageVendreClick(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Vendre Oeuvre");
+            
+        }
 
         private void Quitter_Click(object sender, RoutedEventArgs e)
         {

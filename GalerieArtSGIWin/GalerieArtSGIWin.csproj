@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="SGI">
-      <HintPath>..\..\PRTF-Project\SGI\bin\Debug\SGI.dll</HintPath>
+      <HintPath>..\SGI.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -111,6 +111,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="key-chain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="vente.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -45,12 +45,28 @@
             </TabItem>
             <TabItem Header="Oeuvres">
                 <Grid Background="#FFE5E5E5">
-                    <DataGrid x:Name="DataGridOeuvre" Margin="10,250,124,10"/>
-                    <Image x:Name="image" HorizontalAlignment="Left" Height="173" Margin="633,250,0,0" VerticalAlignment="Top" Width="109" Source="papillon.png" Opacity="0.25"/>
-                    <Label x:Name="labeOeuvreTitre" Content="Titre:" HorizontalAlignment="Left" Margin="168,10,0,0" VerticalAlignment="Top" ToolTip="Alphanumérique (Maximum 60 char)"/>
-                    <TextBox x:Name="textBoxOeuvreTitre" HorizontalAlignment="Left" Height="23" Margin="209,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" TextChanged="textBox_TextChanged"/>
+                    <DataGrid x:Name="DataGridOeuvre" Margin="10,104,160,10"/>
+                    <Image x:Name="image" HorizontalAlignment="Left" Height="225" Margin="601,104,0,0" VerticalAlignment="Top" Width="145" Source="papillon.png"/>
+                    <Label x:Name="labeOeuvreTitre" Content="Titre:" HorizontalAlignment="Left" Margin="82,10,0,0" VerticalAlignment="Top" ToolTip="Alphanumérique (Maximum 60 char)" RenderTransformOrigin="-1.361,0.577"/>
+                    <TextBox x:Name="textBoxOeuvreTitre" HorizontalAlignment="Left" Height="23" Margin="123,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="244" TextChanged="textBox_TextChanged"/>
                     <Label x:Name="labelOeuvreID" Content="ID" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Cursor="" ToolTip="Alphanumérique (5 char de long)"/>
-                    <TextBox x:Name="textBoxOeuvreID" HorizontalAlignment="Left" Height="23" Margin="32,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+                    <TextBox x:Name="textBoxOeuvreID" HorizontalAlignment="Left" Height="23" Margin="32,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="45"/>
+                    <Label x:Name="label1" Content="Année" HorizontalAlignment="Left" Margin="372,7,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBoxOeuvreAnnee" HorizontalAlignment="Left" Height="23" Margin="421,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="60"/>
+                    <Label x:Name="labelOeuvreValEstimee" Content="Valeur estimée" HorizontalAlignment="Left" Margin="10,41,0,0" VerticalAlignment="Top"/>
+                    <TextBox x:Name="textBoxOeuvrePrixEstimee" HorizontalAlignment="Left" Height="23" Margin="102,41,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="100"/>
+                    <Label x:Name="labelArtiste" Content="Artiste" HorizontalAlignment="Left" Margin="209,41,0,0" VerticalAlignment="Top"/>
+                    <ComboBox x:Name="comboBoxOeuvreArtiste" HorizontalAlignment="Left" Margin="258,41,0,0" VerticalAlignment="Top" Width="223"/>
+                    <Button x:Name="buttonAjouterOeuvre" Content="Ajouter" HorizontalAlignment="Left" Margin="606,10,0,0" VerticalAlignment="Top" Width="140" Height="35" TabIndex="4" Click="buttonAjouterArtiste_Click"/>
+                    <Button x:Name="buttonSupprimerOeuvre" Content="Suprrimer" HorizontalAlignment="Left" Margin="606,50,0,0" VerticalAlignment="Top" Width="140" Height="35"/>
+                    <GroupBox x:Name="groupBox" Header="Vendre Oeuvre" HorizontalAlignment="Left" Margin="601,329,0,0" VerticalAlignment="Top" Height="97" Width="145" Cursor="None" FontStyle="Italic">
+                        <Image x:Name="image2" HorizontalAlignment="Left" Height="61" Margin="27,10,0,0" VerticalAlignment="Top" Width="82" Source="vente.png" MouseLeftButtonDown="ImageVendreClick" RenderTransformOrigin="0.81,0.5">
+                            <Image.Effect>
+                                <DropShadowEffect/>
+                            </Image.Effect>
+                        </Image>
+                    </GroupBox>
+
                 </Grid>
             </TabItem>
         </TabControl>
