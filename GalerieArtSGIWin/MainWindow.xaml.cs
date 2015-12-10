@@ -35,7 +35,7 @@ namespace GalerieArtSGIWin
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
             
-            if ((USERNAME.Text == "" || PASSWORD.Text == "") && (SGIArt.modeTest != "O"))
+            if (USERNAME.Text == "" || PASSWORD.Text == "") 
             {
                 MessageBox.Show("Usager et mot de passe sont requis pour obtenir l'accès au système", "Login Incorrect", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }

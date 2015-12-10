@@ -62,7 +62,6 @@ namespace GalerieArtSGIWin
             string conservateurID = textBoxConservateurID.Text;
             string conservateurPrenom = textBoxConservateurPrenom.Text;
             string conservateurNom = textBoxConservateurNom.Text;
-            //MessageBox.Show("Clicker BoutonAjouterConservateur");
             if (conservateurID != "" && conservateurPrenom != "" && conservateurNom != "")
             {
                 if (conservateurID.Length == 5)

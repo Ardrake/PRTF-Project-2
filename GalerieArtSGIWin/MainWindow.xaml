@@ -14,12 +14,13 @@
         <Label x:Name="label1" Content="Nom d'accès :" HorizontalAlignment="Left" Margin="212,178,0,0" VerticalAlignment="Top"/>
         <Label x:Name="label2" Content="Mot de passe :" HorizontalAlignment="Left" Margin="212,209,0,0" VerticalAlignment="Top"/>
         <TextBox x:Name="USERNAME" HorizontalAlignment="Left" Height="23" Margin="304,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" RenderTransformOrigin="-0.017,0.629"/>
-        <TextBox x:Name="PASSWORD" HorizontalAlignment="Left" Height="23" Margin="304,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188"/>
+        <TextBox x:Name="PASSWORD" HorizontalAlignment="Left" Height="23" Margin="304,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" />
         <Button x:Name="button_Copy1" Content="Quitter" HorizontalAlignment="Left" Margin="366,259,0,0" VerticalAlignment="Top" Width="100" Click="button_Click"/>
         <Button x:Name="button" Content="Ok" HorizontalAlignment="Left" Margin="244,259,0,0" VerticalAlignment="Top" Width="100" Click="button_Click_1"/>
         <Rectangle HorizontalAlignment="Left" Height="253" Margin="10,28,0,0" Stroke="Black" VerticalAlignment="Top" Width="187" Fill="#FF5589C3"/>
         <Label x:Name="LOGIN" Content="LOGIN" HorizontalAlignment="Left" Margin="54,28,0,0" VerticalAlignment="Top" FontSize="26.667"/>
         <Image x:Name="image" HorizontalAlignment="Left" Height="163" VerticalAlignment="Top" Width="118" Margin="374,10,0,0" Source="papillon.png"/>
         <Image x:Name="image1" HorizontalAlignment="Left" Height="157" Margin="23,100,0,0" VerticalAlignment="Top" Width="150" Source="key-chain.png"/>
+        
     </Grid>
 </Window>
