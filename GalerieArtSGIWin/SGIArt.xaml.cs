@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using Microsoft.VisualBasic;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -108,11 +109,12 @@ namespace GalerieArtSGIWin
 
         private void buttonAjouterArtiste_Click(object sender, RoutedEventArgs e)
         {
+            string conservateurID = "";
             string artisteID = textBoxArtisteID.Text;
             string artistePrenom = textBoxArtistePrenom.Text;
             string artisteNom = textBoxArtisteNom.Text;
             string conservateurSelection = comboBoxArtiste.Text;
-            string conservateurID = conservateurSelection.Substring(0,5);
+            try { conservateurSelection.Substring(0, 5); } catch { conservateurID = ""; }
             //MessageBox.Show("Clicker BoutonAjouterArtiste");
             if (artisteID != "" && artistePrenom != "" && artisteNom != "")
             {
@@ -164,16 +166,19 @@ namespace GalerieArtSGIWin
          
         private void buttonAjouterOeuvre_Click(object sender, RoutedEventArgs e)
         {
-            string oeuvreID = textBoxOeuvreID.Text;
+            string artisteID = "";
+            string oeuvreID = "";
+            int OeuvreAnnee = 0;
             string oeuvreTitre = textBoxOeuvreTitre.Text;
             string oeuvreAnnéé = textBoxOeuvreAnnee.Text;
             string oeuvrePrixEstimee = textBoxOeuvrePrixEstimee.Text;
-            int OeuvreAnnee = 0;
             int.TryParse(textBoxOeuvreAnnee.Text, out OeuvreAnnee);
             double valeurOeuvre = 0;
             double.TryParse(oeuvrePrixEstimee, out valeurOeuvre);
             string oeuvreSelection = comboBoxOeuvreArtiste.Text;
-            string artisteID = oeuvreSelection.Substring(0, 5);
+            oeuvreID = textBoxOeuvreID.Text;
+            try { artisteID = oeuvreSelection.Substring(0, 5); } catch { artisteID = ""; }
+    
             //MessageBox.Show("Clicker BoutonAjouterOuevre");
             if (oeuvreID != "" && oeuvreTitre != "" && OeuvreAnnee != 0)
             {
@@ -204,6 +209,11 @@ namespace GalerieArtSGIWin
                     {
                         MessageBox.Show("Veuillez choisir un Artiste pour cette oeuvre");
                     }
+                    if (OeuvreAnnee == 0)
+                    {
+                        MessageBox.Show("La date doit etre un nombre de 4 chiffre (ex. 1700)");
+                        textBoxOeuvreAnnee.Background = Brushes.OrangeRed;
+                    }
                 }
                 else
                 {
@@ -216,15 +226,55 @@ namespace GalerieArtSGIWin
                 MessageBox.Show("Veuillez remplir tous les champs obligatoire");
                 if (textBoxOeuvreID.Text == "") textBoxOeuvreID.Background = Brushes.OrangeRed;
                 if (textBoxOeuvreTitre.Text == "") textBoxOeuvreTitre.Background = Brushes.OrangeRed;
-                if (textBoxOeuvreAnnee.Text == "") textBoxOeuvreAnnee.Background = Brushes.OrangeRed;
+                if (OeuvreAnnee == 0) textBoxOeuvreAnnee.Background = Brushes.OrangeRed;
+                if (artisteID == "") comboBoxOeuvreArtiste.Background = Brushes.OrangeRed;
             }
         }
 
 
         private void ImageVendreClick(object sender, RoutedEventArgs e)
         {
-            MessageBox.Show("Vendre Oeuvre");
-            
+            Oeuvre ouvreSelectionner = null;
+            bool ouevretrouver = false;
+            double prixVente = 0;
+            try
+            {
+                ouvreSelectionner = (Oeuvre)DataGridOeuvre.SelectedCells[0].Item;
+                ouevretrouver = true;
+            }
+            catch
+            {
+                MessageBox.Show("Veuillez selectionnez l'oeuvre a vendre dans le tableau ");
+            }
+            if (ouevretrouver && ouvreSelectionner.Etat != "V")
+            {
+                string input = Interaction.InputBox(ouvreSelectionner.ID + " " + ouvreSelectionner.Titre + "\n\nLe prix de vente doit etre supérieur a la valeur estimée " + ouvreSelectionner.ValeurEstimee + "\n\n Incrire le prix de vente si-dessous", "Vendre une Ouevre", "", -1, -1);
+                double.TryParse(input, out prixVente);
+                if (prixVente > ouvreSelectionner.ValeurEstimee)
+                {
+                    gal.VendreOeuvre(ouvreSelectionner, prixVente, false);
+                    // Refresh du datagrid oeuvre
+                    this.DataGridOeuvre.ItemsSource = null;
+                    this.DataGridOeuvre.ItemsSource = gal.TableauOeuvres;
+                    // Refresh du datagrid conservateur
+                    this.dataGridConservateur.ItemsSource = null;
+                    this.dataGridConservateur.ItemsSource = gal.TableauConservateurs;
+                    MessageBox.Show("Oeuvre vendu et commission assigné au conservateur");
+                }
+  
+                else if (prixVente == 0)
+                {
+                    MessageBox.Show("Vente non effectué");
+                }
+                else
+                {
+                    MessageBox.Show("Prix de vente sous la valeur esitmée vente non permise");
+                }
+            }
+            else if (ouevretrouver && ouvreSelectionner.Etat == "V")
+            {
+                MessageBox.Show("Cette oeuvre est déja vendu!");
+            }
         }
 
 
