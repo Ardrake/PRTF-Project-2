@@ -27,20 +27,22 @@ namespace GalerieArtSGIWin
             InitializeComponent();
         }
 
+
         private void button_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
 
+
         private void button_Click_1(object sender, RoutedEventArgs e)
         {
-            
-            if (USERNAME.Text == "" || PASSWORD.Text == "") 
+
+            if (USERNAME.Text == "" || Password.Password == ""  )
             {
                 MessageBox.Show("Usager et mot de passe sont requis pour obtenir l'accès au système", "Login Incorrect", MessageBoxButton.OK, MessageBoxImage.Exclamation);
             }
 
-            else if ((USERNAME.Text == "SGI" && PASSWORD.Text == "admin") || (SGIArt.modeTest == "O"))
+            else if (USERNAME.Text == "SGI" && Password.Password == "admin")
             {
                 this.Hide();
                 SGIArt sgiArt = new SGIArt();
@@ -58,5 +60,6 @@ namespace GalerieArtSGIWin
             }
 
         }
+
     }
 }

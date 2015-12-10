@@ -38,7 +38,7 @@ namespace GalerieArtSGIWin
         }
 
 
-
+        // Load infos dans Combobox Conservateur
         private void LoadComboBoxConservateur()
         { 
             foreach (Conservateur c in gal.TableauConservateurs )
@@ -48,6 +48,7 @@ namespace GalerieArtSGIWin
         }
 
 
+        // Load infos dans Combobox Artiste
         private void LoadcomboBoxOeuvreArtiste()
         {
             foreach (Artiste c in gal.TableauArtistes)
@@ -57,6 +58,11 @@ namespace GalerieArtSGIWin
         }
 
 
+        /// <summary>
+        /// Ajouter Conservateur avec les information dans les textbox + validation
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAjouterConservateur_Click(object sender, RoutedEventArgs e)
         {
             string conservateurID = textBoxConservateurID.Text;
@@ -106,6 +112,11 @@ namespace GalerieArtSGIWin
         }
 
 
+        /// <summary>
+        /// Ajouter artiste au systeme
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAjouterArtiste_Click(object sender, RoutedEventArgs e)
         {
             string conservateurID = "";
@@ -113,8 +124,8 @@ namespace GalerieArtSGIWin
             string artistePrenom = textBoxArtistePrenom.Text;
             string artisteNom = textBoxArtisteNom.Text;
             string conservateurSelection = comboBoxArtiste.Text;
-            try { conservateurSelection.Substring(0, 5); } catch { conservateurID = ""; }
-            //MessageBox.Show("Clicker BoutonAjouterArtiste");
+            try { conservateurID = conservateurSelection.Substring(0, 5); } catch { conservateurID = ""; }
+
             if (artisteID != "" && artistePrenom != "" && artisteNom != "")
             {
                 if (artisteID.Length == 5)
@@ -162,7 +173,12 @@ namespace GalerieArtSGIWin
             }
         }
 
-         
+
+        /// <summary>
+        /// Ajouter l'oeuvre et validation des textbox approprier
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void buttonAjouterOeuvre_Click(object sender, RoutedEventArgs e)
         {
             string artisteID = "";
@@ -231,6 +247,12 @@ namespace GalerieArtSGIWin
         }
 
 
+
+        /// <summary>
+        /// Fonction pour vendre l'oeuvre selectionnez dans le tableau
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ImageVendreClick(object sender, RoutedEventArgs e)
         {
             Oeuvre ouvreSelectionner = null;
@@ -277,6 +299,11 @@ namespace GalerieArtSGIWin
         }
 
 
+        /// <summary>
+        /// Quitter l'application lors du click de quitter
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Quitter_Click(object sender, RoutedEventArgs e)
         {
             //MessageBox.Show("Aurevoir");
@@ -284,6 +311,9 @@ namespace GalerieArtSGIWin
         }
 
 
+        /// <summary>
+        /// Load les donnée test dans le systeme
+        /// </summary>
         private static void LoadDataTest()
         {
             for (int x = 0; x < DataTest.listConservateur.GetLength(0); x++)
@@ -315,9 +345,73 @@ namespace GalerieArtSGIWin
             modeTest = "N";
         }
 
-        private void textBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
 
+        /// <summary>
+        /// Fonction pour supprimer l'oeuvre - Affiche message - fonction non implanté
+        /// la .remove requiet un index, et je n'ai pas reussi a trouver le index dans la collection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSupprimerOeuvre_Click(object sender, RoutedEventArgs e)
+        {
+            Oeuvre ouvreSelectionner = null;
+            bool ouevretrouver = false;
+            try
+            {
+                ouvreSelectionner = (Oeuvre)DataGridOeuvre.SelectedCells[0].Item;
+                ouevretrouver = true;
+                MessageBox.Show(ouvreSelectionner.ToString() + "\n\nOeuvre Non Suprrimé, fonction non implanté");
+            }
+            catch
+            {
+                MessageBox.Show("Veuillez selectionnez l'oeuvre a suprimmer dans le tableau ");
+            }
         }
+
+        /// <summary>
+        /// Fonction pour suprimer un Artiste - Affiche message - non implanté
+        /// la .remove requiet un index, et je n'ai pas reussi a trouver le index dans la collection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSupprimerArtiste_Click(object sender, RoutedEventArgs e)
+        {
+            Artiste ArtisteSelectionner = null;
+            bool Artistetrouver = false;
+            try
+            {
+                ArtisteSelectionner = (Artiste)dataGridArtiste.SelectedCells[0].Item;
+                Artistetrouver = true;
+                MessageBox.Show(ArtisteSelectionner.ToString() + "\n\nArtiste Non Suprrimé, fonction non implanté");
+            }
+            catch
+            {
+                MessageBox.Show("Veuillez selectionnez l'Artiste a suprimmer dans le tableau ");
+            }
+        }
+
+
+        /// <summary>
+        /// Fonction pour suprimer un Conservateur - Affiche message - non implanté
+        /// la .remove requiet un index, et je n'ai pas reussi a trouver le index dans la collection
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void buttonSupprimerConservateur_Click(object sender, RoutedEventArgs e)
+        {
+            Conservateur conservateurSelectionner = null;
+            bool Conservateurtrouver = false;
+            try
+            {
+                conservateurSelectionner = (Conservateur)dataGridConservateur.SelectedCells[0].Item;
+                Conservateurtrouver = true;
+                MessageBox.Show(conservateurSelectionner.ToString() + "\n\nConservateur Non Suprrimé, fonction non implanté");
+            }
+            catch
+            {
+                MessageBox.Show("Veuillez selectionnez le conservateur a suprimmer dans le tableau ");
+            }
+        }
+
     }
 }

@@ -6,21 +6,22 @@
         xmlns:local="clr-namespace:GalerieArtSGIWin"
         mc:Ignorable="d"
         Title="Formulaire SGI" Height="334.983" Width="515.759">
-    <Grid>
-        <Grid.Background>
-            <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightLightColorKey}}"/>
-        </Grid.Background>
-        <Label x:Name="label" Content="Bienvenue &#xD;&#xA;à la Galerie &#xD;&#xA;d'art SGI" HorizontalAlignment="Left" Margin="212,28,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.438,0.488" Width="162" Height="114" FontSize="26.667" FontWeight="Bold"/>
-        <Label x:Name="label1" Content="Nom d'accès :" HorizontalAlignment="Left" Margin="212,178,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="label2" Content="Mot de passe :" HorizontalAlignment="Left" Margin="212,209,0,0" VerticalAlignment="Top"/>
-        <TextBox x:Name="USERNAME" HorizontalAlignment="Left" Height="23" Margin="304,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" RenderTransformOrigin="-0.017,0.629"/>
-        <TextBox x:Name="PASSWORD" HorizontalAlignment="Left" Height="23" Margin="304,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" />
-        <Button x:Name="button_Copy1" Content="Quitter" HorizontalAlignment="Left" Margin="366,259,0,0" VerticalAlignment="Top" Width="100" Click="button_Click"/>
-        <Button x:Name="button" Content="Ok" HorizontalAlignment="Left" Margin="244,259,0,0" VerticalAlignment="Top" Width="100" Click="button_Click_1"/>
-        <Rectangle HorizontalAlignment="Left" Height="253" Margin="10,28,0,0" Stroke="Black" VerticalAlignment="Top" Width="187" Fill="#FF5589C3"/>
-        <Label x:Name="LOGIN" Content="LOGIN" HorizontalAlignment="Left" Margin="54,28,0,0" VerticalAlignment="Top" FontSize="26.667"/>
-        <Image x:Name="image" HorizontalAlignment="Left" Height="163" VerticalAlignment="Top" Width="118" Margin="374,10,0,0" Source="papillon.png"/>
-        <Image x:Name="image1" HorizontalAlignment="Left" Height="157" Margin="23,100,0,0" VerticalAlignment="Top" Width="150" Source="key-chain.png"/>
-        
-    </Grid>
+    <Page xmlns:ff="clr-namespace:GalerieArtSGIWin">
+        <Grid>
+            <Grid.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ControlLightLightColorKey}}"/>
+            </Grid.Background>
+            <Label x:Name="label" Content="Bienvenue &#xD;&#xA;à la Galerie &#xD;&#xA;d'art SGI" HorizontalAlignment="Left" Margin="212,28,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.438,0.488" Width="162" Height="114" FontSize="26.667" FontWeight="Bold" TabIndex="0" />
+            <Label x:Name="label1" Content="Nom d'accès :" HorizontalAlignment="Left" Margin="212,178,0,0" VerticalAlignment="Top"/>
+            <Label x:Name="label2" Content="Mot de passe :" HorizontalAlignment="Left" Margin="212,209,0,0" VerticalAlignment="Top"/>
+            <TextBox x:Name="USERNAME" HorizontalAlignment="Left" Height="23" Margin="304,178,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" RenderTransformOrigin="-0.017,0.629"/>
+            <Button x:Name="button_Copy1" Content="Quitter" HorizontalAlignment="Left" Margin="366,259,0,0" VerticalAlignment="Top" Width="100" Click="button_Click" TabIndex="3"/>
+            <Button x:Name="button" Content="Ok" HorizontalAlignment="Left" Margin="244,259,0,0" VerticalAlignment="Top" Width="100" Click="button_Click_1" TabIndex="2"/>
+            <Rectangle HorizontalAlignment="Left" Height="253" Margin="10,28,0,0" Stroke="Black" VerticalAlignment="Top" Width="187" Fill="#FF5589C3"/>
+            <Label x:Name="LOGIN" Content="LOGIN" HorizontalAlignment="Left" Margin="54,28,0,0" VerticalAlignment="Top" FontSize="26.667"/>
+            <Image x:Name="image" HorizontalAlignment="Left" Height="163" VerticalAlignment="Top" Width="118" Margin="374,10,0,0" Source="papillon.png"/>
+            <Image x:Name="image1" HorizontalAlignment="Left" Height="157" Margin="23,100,0,0" VerticalAlignment="Top" Width="150" Source="key-chain.png"/>
+            <PasswordBox x:Name="Password" HorizontalAlignment="Left" Margin="304,209,0,0" VerticalAlignment="Top" Width="188" Height="26" TabIndex="1"/>
+        </Grid>
+    </Page>
 </Window>
