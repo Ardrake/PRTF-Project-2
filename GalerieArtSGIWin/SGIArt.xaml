@@ -9,10 +9,9 @@
 
     <Grid>
         <Menu>
-            <MenuItem Header="_Menu">
-                <MenuItem Header="_Fichier" />
-                <MenuItem Header="_Ouvrir" />
-                <MenuItem Header="_Sauvegarder" />
+            <MenuItem Header="_Fichier">
+                <MenuItem Header="_Ouvrir" Click="OuvrirFichier" />
+                <MenuItem Header="_Sauvegarder" Click="SauvegarderFichier"/>
                 <Separator />
                 <MenuItem Header="_Quitter" Click="Quitter_Click" />
             </MenuItem>

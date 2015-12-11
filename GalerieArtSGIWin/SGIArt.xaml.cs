@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using SGI;
 
+
 namespace GalerieArtSGIWin
 {
     /// <summary>
@@ -22,24 +23,14 @@ namespace GalerieArtSGIWin
     public partial class SGIArt : Window
     {
         public static string modeTest = "O"; // Mettre a "N" pour ne pas loadé le DataTest
-        static Galerie gal = new Galerie();
+        public static Galerie gal = new Galerie();
 
         public SGIArt()
         {
             InitializeComponent();
-
             tabControl1.SelectedIndex = 0;
-            // initialise le bon tab et texte dans la bar de status
             CursorTabName.Text = "Conservateurs";
             tabControl1.SelectionChanged += tabControl1_Selected;
-            LoadDataTest();
-
-
-            this.dataGridConservateur.ItemsSource = gal.TableauConservateurs;
-            this.dataGridArtiste.ItemsSource = gal.TableauArtistes;
-            this.DataGridOeuvre.ItemsSource = gal.TableauOeuvres;
-            LoadComboBoxConservateur();
-            LoadcomboBoxOeuvreArtiste();
         }
 
 
@@ -322,6 +313,27 @@ namespace GalerieArtSGIWin
             }
         }
 
+
+        // methode pour sauvegarder data dans fichier texte
+        private void SauvegarderFichier(object sender, RoutedEventArgs e)
+        {
+            Traitement.SauvegarderFichier("galerie.txt");
+        }
+
+
+        // methode pour ouvrir fichier sauvegarder dans fichier texte
+        private void OuvrirFichier(object sender, RoutedEventArgs e)
+        {
+            Traitement.OuvrirFichier("galerie.txt");
+
+            dataGridConservateur.ItemsSource = gal.TableauConservateurs;
+            dataGridArtiste.ItemsSource = gal.TableauArtistes;
+            DataGridOeuvre.ItemsSource = gal.TableauOeuvres;
+
+            LoadComboBoxConservateur();
+            LoadcomboBoxOeuvreArtiste();
+        }
+        
 
         /// <summary>
         /// Quitter l'application lors du click de quitter
