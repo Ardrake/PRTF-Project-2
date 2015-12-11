@@ -5,15 +5,25 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:GalerieArtSGIWin"
         mc:Ignorable="d"
-        Title="Système de Galerie Informatisé (SGI)" Height="558.237" Width="790.004">
+        Title="Système de Galerie Informatisé (SGI)" Height="587.237" Width="790.004">
+
     <Grid>
-        <Button x:Name="Quitter" Content="Quitter" Margin="0,0,10,10" Click="Quitter_Click" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>
-        <TabControl x:Name="tabControl" Margin="10,10,10,50">
+        <Menu>
+            <MenuItem Header="_Menu">
+                <MenuItem Header="_Fichier" />
+                <MenuItem Header="_Ouvrir" />
+                <MenuItem Header="_Sauvegarder" />
+                <Separator />
+                <MenuItem Header="_Quitter" Click="Quitter_Click" />
+            </MenuItem>
+        </Menu>
+        <!--<Button x:Name="Quitter" Content="Quitter" Margin="0,0,10,10" Click="Quitter_Click" Height="22" VerticalAlignment="Bottom" HorizontalAlignment="Right" Width="75"/>-->
+        <TabControl x:Name="tabControl1" Margin="10,25,10,50">
             <TabItem Header="Conservateurs" Height="23" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5" Margin="0,0,0,-1">
 
                     <!--<DataGrid x:Name="dataGridConservateur" Margin="10,103,278,10" Grid.RowSpan="2"/>-->
-                    <DataGrid x:Name="dataGridConservateur" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10,100,281,9" IsReadOnly="True" CanUserReorderColumns="False" CanUserResizeColumns="False">
+                    <DataGrid x:Name="dataGridConservateur" ItemsSource="{Binding}" AutoGenerateColumns="False" Margin="10,100,281,10" IsReadOnly="True" CanUserReorderColumns="False" CanUserResizeColumns="False">
                         <DataGrid.Columns>
                             <DataGridTextColumn x:Name="dgcIdConservateur" Header="ID" Binding="{Binding ID}" Width="50" />
                             <DataGridTextColumn x:Name="dgcPrenomConservateur" Header="Prénom" Binding="{Binding Prenom}" Width="150" />
@@ -28,7 +38,7 @@
                     <TextBox x:Name="textBoxConservateurID" HorizontalAlignment="Left" Height="23" Margin="69,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="59" TabIndex="0"/>
                     <Label x:Name="labelConservateurNom" Content="Nom:" HorizontalAlignment="Left" Margin="10,72,0,0" VerticalAlignment="Top" ToolTip="Alphanumérique (Maximum 60 char)" RenderTransformOrigin="1,0.538"/>
                     <TextBox x:Name="textBoxConservateurNom" HorizontalAlignment="Left" Height="23" Margin="69,72,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" TabIndex="2"/>
-                    <Image x:Name="image1" HorizontalAlignment="Left" Height="414" Margin="479,10,0,0" VerticalAlignment="Top" Width="263" Source="papillon.png" Grid.RowSpan="2"/>
+                    <Image x:Name="image1" HorizontalAlignment="Left" Height="431" Margin="485,10,0,0"  VerticalAlignment="Top" Width="267" Source="papillon.png"/>
                     <Button x:Name="buttonAjouterConservateur" Content="Ajouter" HorizontalAlignment="Left" Margin="331,10,0,0" VerticalAlignment="Top" Width="140" Height="35" TabIndex="3" Click="buttonAjouterConservateur_Click"/>
                     <Button x:Name="buttonSupprimerConservateur" Content="Suprrimer" HorizontalAlignment="Left" Margin="331,60,0,0" VerticalAlignment="Top" Width="140" Height="35" Click="buttonSupprimerConservateur_Click" />
                 </Grid>
@@ -51,7 +61,7 @@
                     <TextBox x:Name="textBoxArtisteID" HorizontalAlignment="Left" Height="23" Margin="27,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" TabIndex="0"/>
                     <Label x:Name="labelArtisteNom" Content="Nom:" HorizontalAlignment="Left" Margin="10,69,0,0" VerticalAlignment="Top" ToolTip="Alphanumérique (Maximum 60 char)" RenderTransformOrigin="1,0.538" Height="26" Width="39"/>
                     <TextBox x:Name="textBoxArtisteNom" HorizontalAlignment="Left" Height="23" Margin="69,69,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="257" TabIndex="3" />
-                    <Image x:Name="image1_Copy" Height="413" Margin="485,10,10,0" VerticalAlignment="Top" Source="papillon.png"/>
+                    <Image x:Name="image1_Copy" Height="431" Margin="485,10,0,0" VerticalAlignment="Top" Source="papillon.png"/>
                     <Label x:Name="label" Content="Conservateur:" HorizontalAlignment="Left" Margin="82,10,0,0" VerticalAlignment="Top"/>
                     <ComboBox x:Name="comboBoxArtiste" HorizontalAlignment="Left" Margin="169,10,0,0" VerticalAlignment="Top" Width="166" TabIndex="1"/>
                     <Button x:Name="buttonAjouterArtiste" Content="Ajouter" HorizontalAlignment="Left" Margin="340,10,0,0" VerticalAlignment="Top" Width="140" Height="35" TabIndex="4" Click="buttonAjouterArtiste_Click"/>
@@ -81,10 +91,24 @@
                             </Image.Effect>
                         </Image>
                     </GroupBox>
-
                 </Grid>
             </TabItem>
+
         </TabControl>
+        <StatusBar DockPanel.Dock="Bottom" Margin="0,524,0,0" BorderThickness="0,2,0,0">
+            <StatusBar.Background>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionColorKey}}"/>
+            </StatusBar.Background>
+            <StatusBar.BorderBrush>
+                <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ActiveCaptionTextColorKey}}"/>
+            </StatusBar.BorderBrush>
+            <StatusBarItem Width="772">
+                <StatusBarItem.Background>
+                    <SolidColorBrush Color="{DynamicResource {x:Static SystemColors.ScrollBarColorKey}}"/>
+                </StatusBarItem.Background>
+                <TextBlock Name="CursorTabName" Width="775" />
+            </StatusBarItem>
+        </StatusBar>
 
     </Grid>
 </Window>

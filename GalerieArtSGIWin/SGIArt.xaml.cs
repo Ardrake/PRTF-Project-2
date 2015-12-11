@@ -24,17 +24,40 @@ namespace GalerieArtSGIWin
         public static string modeTest = "O"; // Mettre a "N" pour ne pas loadé le DataTest
         static Galerie gal = new Galerie();
 
-        
         public SGIArt()
         {
             InitializeComponent();
+
+            tabControl1.SelectedIndex = 0;
+            // initialise le bon tab et texte dans la bar de status
+            CursorTabName.Text = "Conservateurs";
+            tabControl1.SelectionChanged += tabControl1_Selected;
             LoadDataTest();
+
 
             this.dataGridConservateur.ItemsSource = gal.TableauConservateurs;
             this.dataGridArtiste.ItemsSource = gal.TableauArtistes;
             this.DataGridOeuvre.ItemsSource = gal.TableauOeuvres;
             LoadComboBoxConservateur();
             LoadcomboBoxOeuvreArtiste();
+        }
+
+
+        // information satatus bar
+        private void tabControl1_Selected(object sender, SelectionChangedEventArgs e)
+        {
+            if (tabControl1.SelectedIndex == 0)
+            {
+                CursorTabName.Text = "Conservateurs";
+            }
+            if (tabControl1.SelectedIndex == 1)
+            {
+                CursorTabName.Text = "Artistes";
+            }
+            if (tabControl1.SelectedIndex == 2)
+            {
+                CursorTabName.Text = "Oeuvres";
+            }
         }
 
 
@@ -212,6 +235,7 @@ namespace GalerieArtSGIWin
                         textBoxOeuvreID.Text = "";
                         textBoxOeuvreTitre.Text = "";
                         textBoxOeuvreAnnee.Text = "";
+                        textBoxOeuvrePrixEstimee.Text = "";
                         textBoxOeuvreID.Background = Brushes.White;
                         textBoxOeuvreTitre.Background = Brushes.White;
                         textBoxOeuvreAnnee.Background = Brushes.White;
